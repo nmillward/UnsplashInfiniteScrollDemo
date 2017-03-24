@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Unsplash Demo</string>
+    <string name="title_activity_image_overview">ImageOverviewActivity</string>
 </resources>
