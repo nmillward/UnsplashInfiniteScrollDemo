@@ -18,6 +18,10 @@
         <activity
             android:name=".ui.activities.ImageOverviewActivity"
             android:label="@string/title_activity_image_overview"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activities.ImageDetailActivity"
+            android:label="@string/title_activity_image_detail"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
