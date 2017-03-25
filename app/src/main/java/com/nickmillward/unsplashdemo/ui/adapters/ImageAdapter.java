@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nickmillward.unsplashdemo.R;
-import com.nickmillward.unsplashdemo.ui.models.Image;
+import com.nickmillward.unsplashdemo.models.Image;
 import com.nickmillward.unsplashdemo.ui.views.ImageOverviewView;
 
 import java.util.ArrayList;

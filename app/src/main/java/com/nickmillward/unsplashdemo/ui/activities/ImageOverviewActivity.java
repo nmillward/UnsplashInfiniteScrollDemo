@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 import com.nickmillward.unsplashdemo.R;
-import com.nickmillward.unsplashdemo.ui.models.Image;
+import com.nickmillward.unsplashdemo.models.Image;
 import com.nickmillward.unsplashdemo.ui.views.ImageOverviewView;
 
 import butterknife.BindView;

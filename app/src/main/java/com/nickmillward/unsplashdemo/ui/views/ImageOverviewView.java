@@ -1,6 +1,6 @@
 package com.nickmillward.unsplashdemo.ui.views;
 
-import com.nickmillward.unsplashdemo.ui.models.Image;
+import com.nickmillward.unsplashdemo.models.Image;
 
 /**
  * Created by nmillward on 3/24/17.
