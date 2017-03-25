@@ -7,11 +7,13 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 import com.nickmillward.unsplashdemo.R;
+import com.nickmillward.unsplashdemo.ui.models.Image;
+import com.nickmillward.unsplashdemo.ui.views.ImageOverviewView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ImageOverviewActivity extends AppCompatActivity {
+public class ImageOverviewActivity extends AppCompatActivity implements ImageOverviewView {
 
     private static final int COLUMNS = 2;
 
@@ -39,4 +41,28 @@ public class ImageOverviewActivity extends AppCompatActivity {
         rv_main_image_overview.setLayoutManager(gridLayoutManager);
     }
 
+    @Override
+    public void showImageList() {
+
+    }
+
+    @Override
+    public void showAddedImages(Image image) {
+
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void showError() {
+
+    }
 }
