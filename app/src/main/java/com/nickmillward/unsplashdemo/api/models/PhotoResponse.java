@@ -1,13 +1,15 @@
 package com.nickmillward.unsplashdemo.api.models;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by nmillward on 3/25/17.
  */
 
 public class PhotoResponse {
 
-    public User user;
-    private Urls urls;
+    @SerializedName("user") private User user;
+    @SerializedName("urls") private Urls urls;
 
     public User getUser() {
         return user;

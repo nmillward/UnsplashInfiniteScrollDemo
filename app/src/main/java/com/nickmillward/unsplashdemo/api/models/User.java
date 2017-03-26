@@ -8,8 +8,8 @@ import com.google.gson.annotations.SerializedName;
 
 public class User {
 
-    @SerializedName("name") String name;
-    @SerializedName("location") String location;
+    @SerializedName("name") private String name;
+    @SerializedName("location") private String location;
 
     public String getName() {
         return name;

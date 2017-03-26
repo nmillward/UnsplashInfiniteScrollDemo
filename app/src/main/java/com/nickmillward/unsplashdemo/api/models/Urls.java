@@ -8,8 +8,8 @@ import com.google.gson.annotations.SerializedName;
 
 public class Urls {
 
-    @SerializedName("regular") String image_regular;
-    @SerializedName("small") String image_small;
+    @SerializedName("regular") private String image_regular;
+    @SerializedName("small") private String image_small;
 
     public String getImage_regular() {
         return image_regular;
