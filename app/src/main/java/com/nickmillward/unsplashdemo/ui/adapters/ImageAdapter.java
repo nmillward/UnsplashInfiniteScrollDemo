@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nickmillward.unsplashdemo.R;
+import com.nickmillward.unsplashdemo.api.models.PhotoResponse;
 import com.nickmillward.unsplashdemo.models.Image;
 import com.nickmillward.unsplashdemo.ui.views.ImageOverviewView;
 
@@ -24,6 +25,8 @@ import butterknife.ButterKnife;
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHolder> {
 
     private ImageOverviewView view;
+    private List<PhotoResponse> photos = new ArrayList<>();
+
     private List<Image> images = new ArrayList<>();
 
     public ImageAdapter(ImageOverviewView view) {
@@ -38,8 +41,12 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
 
     @Override
     public void onBindViewHolder(ImageViewHolder holder, int position) {
-        Image image = images.get(position);
+//        Image image = images.get(position);
         //TODO: set image(Glide) and text
+
+        PhotoResponse photo = photos.get(position);
+        holder.userName.setText(photo.getUser().getName());
+        holder.userLocation.setText(photo.getUser().getLocation());
     }
 
     @Override
@@ -47,9 +54,10 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
         return images.size();
     }
 
-    public void onImageAdded(Image image) {
-        images.add(image);
-        notifyItemChanged(images.size() - 1);
+    public void onImagesAdded(List<PhotoResponse> photos) {
+//        images.add(photos);
+//        notifyItemChanged(images.size() - 1);
+        this.photos = photos;
     }
 
     public class ImageViewHolder extends RecyclerView.ViewHolder {

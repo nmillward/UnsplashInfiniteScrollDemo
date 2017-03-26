@@ -1,6 +1,8 @@
 package com.nickmillward.unsplashdemo.ui.views;
 
-import com.nickmillward.unsplashdemo.models.Image;
+import com.nickmillward.unsplashdemo.api.models.PhotoResponse;
+
+import java.util.List;
 
 /**
  * Created by nmillward on 3/24/17.
@@ -8,7 +10,7 @@ import com.nickmillward.unsplashdemo.models.Image;
 
 public interface ImageOverviewView extends View {
     void showImageList();
-    void showAddedImages(Image image);
+    void showAddedImages(List<PhotoResponse> images);
     void showLoading();
     void hideLoading();
     void showError();

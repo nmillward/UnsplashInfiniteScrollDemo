@@ -1,7 +1,8 @@
 package com.nickmillward.unsplashdemo.api;
 
 import com.nickmillward.unsplashdemo.api.models.PhotoResponse;
-import com.nickmillward.unsplashdemo.api.models.ListWrapper;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -13,6 +14,6 @@ import retrofit2.http.GET;
 public interface UnsplashService {
 
     @GET("photos")
-    Call<ListWrapper<PhotoResponse>> getPhotos();
+    Call<List<PhotoResponse>> getPhotos();
 
 }
