@@ -6,25 +6,25 @@ package com.nickmillward.unsplashdemo.models;
 
 public class Image {
 
-    private String image;
-    private String userName;
-    private String userLocation;
+    private String regular;
+    private String name;
+    private String location;
 
     public Image(String image, String userName, String userLocation) {
-        this.image = image;
-        this.userName = userName;
-        this.userLocation = userLocation;
+        this.regular = image;
+        this.name = userName;
+        this.location = userLocation;
     }
 
-    public String getImage() {
-        return image;
+    public String getRegular() {
+        return regular;
     }
 
     public String getUserName() {
-        return userName;
+        return name;
     }
 
     public String getUserLocation() {
-        return userLocation;
+        return location;
     }
 }
