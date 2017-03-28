@@ -30,7 +30,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
 
     public ImageAdapter(Context context) {
         this.context = context;
-        Log.d("ADAPTER", "--> Image Adapter constructed");
+        Log.d("ADAPTER", "--> Adapter constructed");
     }
 
     @Override
