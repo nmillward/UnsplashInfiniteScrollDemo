@@ -61,7 +61,6 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
 
     @Override
     public int getItemCount() {
-        Log.d("ADAPTER", "--> photos list size = " + photos.size());
         return photos.size();
     }
 

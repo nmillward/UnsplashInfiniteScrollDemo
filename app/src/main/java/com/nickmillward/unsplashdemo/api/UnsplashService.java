@@ -13,7 +13,7 @@ import retrofit2.http.GET;
 
 public interface UnsplashService {
 
-    @GET("photos/?client_id=7722d16f0aa594e42744971bc1453894529e924055f3cd2bfebdba439e6e0017")
+    @GET("/photos")
     Call<List<PhotoResponse>> getPhotos();
 
 }
