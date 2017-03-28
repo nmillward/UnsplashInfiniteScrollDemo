@@ -1,17 +1,20 @@
 package com.nickmillward.unsplashdemo.ui.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 
 import com.nickmillward.unsplashdemo.R;
 import com.nickmillward.unsplashdemo.api.models.PhotoResponse;
 import com.nickmillward.unsplashdemo.ui.adapters.ImageAdapter;
 import com.nickmillward.unsplashdemo.ui.presenters.ImageOverviewPresenter;
 import com.nickmillward.unsplashdemo.ui.views.ImageOverviewView;
+import com.nickmillward.unsplashdemo.utils.ItemClickListener;
 
 import java.util.List;
 
@@ -37,10 +40,9 @@ public class ImageOverviewActivity extends AppCompatActivity implements ImageOve
         setSupportActionBar(toolbar);
         ButterKnife.bind(this);
 
-        adapter = new ImageAdapter(this);
+        setupAdapter();
         setupRecyclerView();
         setupPresenter();
-
     }
 
     @Override
@@ -62,6 +64,15 @@ public class ImageOverviewActivity extends AppCompatActivity implements ImageOve
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+    private void setupAdapter() {
+        adapter = new ImageAdapter(this, new ItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                presenter.cardviewItemClicked();
+            }
+        });
     }
 
     private void setupPresenter() {
@@ -105,5 +116,10 @@ public class ImageOverviewActivity extends AppCompatActivity implements ImageOve
     @Override
     public void showError() {
         Log.d(TAG, "--> Error");
+    }
+
+    @Override
+    public void navigateToDetailScreen() {
+        startActivity(new Intent(this, ImageDetailActivity.class));
     }
 }

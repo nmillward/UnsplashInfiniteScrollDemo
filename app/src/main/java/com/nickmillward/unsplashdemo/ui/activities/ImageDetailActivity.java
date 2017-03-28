@@ -5,8 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.nickmillward.unsplashdemo.R;
+import com.nickmillward.unsplashdemo.ui.views.ImageDetailView;
 
-public class ImageDetailActivity extends AppCompatActivity {
+public class ImageDetailActivity extends AppCompatActivity implements ImageDetailView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,4 +18,8 @@ public class ImageDetailActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void navigateToOverviewScreen() {
+
+    }
 }

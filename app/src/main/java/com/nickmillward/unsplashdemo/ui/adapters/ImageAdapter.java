@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.nickmillward.unsplashdemo.R;
 import com.nickmillward.unsplashdemo.api.models.PhotoResponse;
+import com.nickmillward.unsplashdemo.utils.ItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,19 +26,31 @@ import butterknife.ButterKnife;
 
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHolder> {
 
+    ItemClickListener itemClickListener;
+
     private Context context;
     private List<PhotoResponse> photos = new ArrayList<>();
 
-    public ImageAdapter(Context context) {
+    public ImageAdapter(Context context, ItemClickListener itemClickListener) {
         this.context = context;
+        this.itemClickListener = itemClickListener;
         Log.d("ADAPTER", "--> Adapter constructed");
     }
 
     @Override
     public ImageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_image_overview, parent, false);
+
+        final ImageViewHolder imageViewHolder = new ImageViewHolder(itemView);
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemClickListener.onItemClick(v, imageViewHolder.getAdapterPosition());
+            }
+        });
+
         Log.d("ADAPTER", "--> Item Layout Inflated");
-        return new ImageViewHolder(itemView);
+        return imageViewHolder;
     }
 
     @Override

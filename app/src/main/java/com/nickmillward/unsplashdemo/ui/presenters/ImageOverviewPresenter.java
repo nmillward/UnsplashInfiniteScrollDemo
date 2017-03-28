@@ -71,4 +71,8 @@ public class ImageOverviewPresenter implements Presenter<ImageOverviewView> {
             }
         });
     }
+
+    public void cardviewItemClicked() {
+        view.navigateToDetailScreen();
+    }
 }

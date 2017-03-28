@@ -5,4 +5,5 @@ package com.nickmillward.unsplashdemo.ui.views;
  */
 
 public interface ImageDetailView extends View {
+    void navigateToOverviewScreen();
 }
