@@ -14,5 +14,5 @@ public interface ImageOverviewView extends View {
     void showLoading();
     void hideLoading();
     void showError();
-    void navigateToDetailScreen();
+    void navigateToDetailScreen(android.view.View view, int position);
 }

@@ -70,7 +70,7 @@ public class ImageOverviewActivity extends AppCompatActivity implements ImageOve
         adapter = new ImageAdapter(this, new ItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                presenter.cardviewItemClicked();
+                presenter.cardviewItemClicked(view, position);
             }
         });
     }
@@ -119,7 +119,16 @@ public class ImageOverviewActivity extends AppCompatActivity implements ImageOve
     }
 
     @Override
-    public void navigateToDetailScreen() {
-        startActivity(new Intent(this, ImageDetailActivity.class));
+    public void navigateToDetailScreen(View view, int position) {
+        Intent intent = new Intent(this, ImageDetailActivity.class);
+        List<PhotoResponse> photoList = adapter.getPhotos();
+        intent.putExtra(ImageDetailActivity.KEY_USER_NAME, photoList.get(position).getUser().getName());
+        intent.putExtra(ImageDetailActivity.KEY_USER_LOCATION, photoList.get(position).getUser().getLocation());
+        intent.putExtra(ImageDetailActivity.KEY_PHOTO_URL, photoList.get(position).getUrls().getImage_regular());
+        Log.d(TAG, "send username details --> " + photoList.get(position).getUser().getName());
+        Log.d(TAG, "send url details --> " + photoList.get(position).getUrls().getImage_regular());
+        startActivity(intent);
     }
+
+
 }

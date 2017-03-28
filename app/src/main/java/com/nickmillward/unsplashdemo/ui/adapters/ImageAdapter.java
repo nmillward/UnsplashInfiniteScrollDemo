@@ -94,6 +94,10 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
         notifyDataSetChanged();
     }
 
+    public List<PhotoResponse> getPhotos() {
+        return photos;
+    }
+
     public class ImageViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.iv_overview_item_image) ImageView image;

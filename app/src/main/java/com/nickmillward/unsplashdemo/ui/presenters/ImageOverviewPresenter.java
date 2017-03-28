@@ -1,6 +1,7 @@
 package com.nickmillward.unsplashdemo.ui.presenters;
 
 import android.util.Log;
+import android.view.View;
 
 import com.nickmillward.unsplashdemo.api.UnsplashApi;
 import com.nickmillward.unsplashdemo.api.models.PhotoResponse;
@@ -72,7 +73,7 @@ public class ImageOverviewPresenter implements Presenter<ImageOverviewView> {
         });
     }
 
-    public void cardviewItemClicked() {
-        view.navigateToDetailScreen();
+    public void cardviewItemClicked(View v, int position) {
+        view.navigateToDetailScreen(v, position);
     }
 }
