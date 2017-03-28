@@ -3,21 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:cardElevation="@dimen/cardview_default_elevation"
+    android:layout_height="wrap_content"
+    android:layout_margin="2dp"
+    app:cardElevation="0dp"
+    app:cardCornerRadius="0dp"
     tools:background="@color/colorAccent">
 
     <LinearLayout
         android:id="@+id/ll_overview_item_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/iv_overview_item_image"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:src="@mipmap/ic_launcher" />
+            android:layout_height="220dp"
+            android:src="@mipmap/ic_launcher" />
 
         <LinearLayout
             android:id="@+id/ll_overview_item_banner"
@@ -25,21 +27,21 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="8dp"
-            tools:background="@android:color/holo_blue_light">
+            android:background="@android:color/holo_blue_light">
 
             <TextView
                 android:id="@+id/tv_overview_item_banner_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                tools:text="John Smith" />
+                android:text="John Smith" />
 
             <TextView
                 android:id="@+id/tv_overview_item_banner_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                tools:text="New York, NY" />
+                android:text="New York, NY" />
 
 
         </LinearLayout>

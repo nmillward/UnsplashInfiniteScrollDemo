@@ -37,17 +37,15 @@ public class ImageOverviewActivity extends AppCompatActivity implements ImageOve
         setSupportActionBar(toolbar);
         ButterKnife.bind(this);
 
-        presenter = new ImageOverviewPresenter();
         adapter = new ImageAdapter(this);
-
         setupRecyclerView();
+        setupPresenter();
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        presenter.attachView(this);
-        presenter.subscribe();
     }
 
     @Override
@@ -58,12 +56,18 @@ public class ImageOverviewActivity extends AppCompatActivity implements ImageOve
     @Override
     protected void onStop() {
         super.onStop();
+        presenter.unsubscribe();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        presenter.unsubscribe();
+    }
+
+    private void setupPresenter() {
+        presenter = new ImageOverviewPresenter();
+        presenter.attachView(this);
+        presenter.subscribe();
     }
 
     private void setupRecyclerView() {
@@ -71,17 +75,21 @@ public class ImageOverviewActivity extends AppCompatActivity implements ImageOve
 
         // TODO: Handle orientation change -- landscape layout
 
+        rv_main_image_overview.hasFixedSize();
         rv_main_image_overview.setLayoutManager(gridLayoutManager);
+        Log.d(TAG, "--> set layout manager");
     }
 
     @Override
     public void showImageList() {
         rv_main_image_overview.setAdapter(adapter);
+        Log.d(TAG, "--> show image list");
     }
 
     @Override
     public void showAddedImages(List<PhotoResponse> images) {
-        adapter.onImagesAdded(images);
+        adapter.addPhotos(images);
+        Log.d(TAG, "--> show added images");
     }
 
     @Override

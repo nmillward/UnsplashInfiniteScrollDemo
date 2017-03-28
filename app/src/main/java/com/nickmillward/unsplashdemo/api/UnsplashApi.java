@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class UnsplashApi {
 
-    private static final String BASE_URL = "https://api.unsplash.com";
+    private static final String BASE_URL = "https://api.unsplash.com/";
     private static UnsplashApi instance;
     private UnsplashService service;
 
