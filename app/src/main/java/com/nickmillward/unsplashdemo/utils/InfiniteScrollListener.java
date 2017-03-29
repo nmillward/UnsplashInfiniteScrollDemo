@@ -2,6 +2,7 @@ package com.nickmillward.unsplashdemo.utils;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 /**
  * Created by nmillward on 3/29/17.
@@ -11,8 +12,8 @@ import android.support.v7.widget.RecyclerView;
 public abstract class InfiniteScrollListener extends RecyclerView.OnScrollListener {
 
     private int minItemsBeforeNextLoad = 5;
-    private int startingPage = 0;
-    private int currentPage = 0;
+    private int startingPage = 1;
+    private int currentPage = 1;
     private int lastestTotalItemCount = 0;
     private boolean isLoading = true;
 
@@ -21,18 +22,6 @@ public abstract class InfiniteScrollListener extends RecyclerView.OnScrollListen
     public InfiniteScrollListener(GridLayoutManager layoutManager) {
         this.layoutManager = layoutManager;
         minItemsBeforeNextLoad *= layoutManager.getSpanCount();
-    }
-
-    public int getLastVisibleItem(int[] lastVisibleItemPositions) {
-        int maxSize = 0;
-        for (int i = 0; i < lastVisibleItemPositions.length; i++) {
-            if (i == 0) {
-                maxSize = lastVisibleItemPositions[i];
-            } else if (lastVisibleItemPositions[i] > maxSize) {
-                maxSize = lastVisibleItemPositions[i];
-            }
-        }
-        return maxSize;
     }
 
     @Override
@@ -59,6 +48,9 @@ public abstract class InfiniteScrollListener extends RecyclerView.OnScrollListen
             onLoadMore(currentPage, totalItemCount, recyclerView);
             isLoading = true;
         }
+
+        Log.d("SCROLL", "currentPage: " + currentPage);
+        Log.d("SCROLL", "totalItemCount: " + totalItemCount);
     }
 
     public abstract void onLoadMore(int page, int totalItemsCount, RecyclerView view);

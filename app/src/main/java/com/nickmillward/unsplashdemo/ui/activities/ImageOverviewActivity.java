@@ -14,6 +14,7 @@ import com.nickmillward.unsplashdemo.api.models.PhotoResponse;
 import com.nickmillward.unsplashdemo.ui.adapters.ImageAdapter;
 import com.nickmillward.unsplashdemo.ui.presenters.ImageOverviewPresenter;
 import com.nickmillward.unsplashdemo.ui.views.ImageOverviewView;
+import com.nickmillward.unsplashdemo.utils.InfiniteScrollListener;
 import com.nickmillward.unsplashdemo.utils.ItemClickListener;
 
 import java.util.List;
@@ -31,6 +32,7 @@ public class ImageOverviewActivity extends AppCompatActivity implements ImageOve
     private ImageOverviewPresenter presenter;
     private GridLayoutManager gridLayoutManager;
     private ImageAdapter adapter;
+    private InfiniteScrollListener infiniteScrollListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +91,14 @@ public class ImageOverviewActivity extends AppCompatActivity implements ImageOve
 
         rv_main_image_overview.hasFixedSize();
         rv_main_image_overview.setLayoutManager(gridLayoutManager);
+
+        infiniteScrollListener = new InfiniteScrollListener(gridLayoutManager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                presenter.updatePhotos(page);
+            }
+        };
+        rv_main_image_overview.addOnScrollListener(infiniteScrollListener);
         Log.d(TAG, "--> set layout manager");
     }
 
