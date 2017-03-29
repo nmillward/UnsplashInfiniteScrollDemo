@@ -6,6 +6,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 /**
  * Created by nmillward on 3/25/17.
@@ -14,6 +15,9 @@ import retrofit2.http.GET;
 public interface UnsplashService {
 
     @GET("/photos")
-    Call<List<PhotoResponse>> getPhotos();
+    Call<List<PhotoResponse>> getPhotos(
+            @Query("page") int page,
+            @Query("per_page") int pageLimit
+    );
 
 }

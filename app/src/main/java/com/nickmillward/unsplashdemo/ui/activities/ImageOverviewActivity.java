@@ -79,6 +79,7 @@ public class ImageOverviewActivity extends AppCompatActivity implements ImageOve
         presenter = new ImageOverviewPresenter();
         presenter.attachView(this);
         presenter.subscribe();
+        presenter.updatePhotos(1);  //TODO: make this dynamic
     }
 
     private void setupRecyclerView() {

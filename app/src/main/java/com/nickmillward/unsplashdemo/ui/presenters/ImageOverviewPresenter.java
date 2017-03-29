@@ -21,6 +21,8 @@ import retrofit2.Response;
 
 public class ImageOverviewPresenter implements Presenter<ImageOverviewView> {
 
+    private static final int PER_PAGE_LIMIT = 30;
+
     private ImageOverviewView view;
     private Set<Call<List<PhotoResponse>>> photoCalls;
 
@@ -32,7 +34,6 @@ public class ImageOverviewPresenter implements Presenter<ImageOverviewView> {
 
     public void subscribe() {
         view.showImageList();
-        updatePhotos();
     }
 
     public void unsubscribe() {
@@ -45,12 +46,12 @@ public class ImageOverviewPresenter implements Presenter<ImageOverviewView> {
         photoCalls.clear();
     }
 
-    public void updatePhotos() {
+    public void updatePhotos(int page) {
         view.showLoading();
 
         final Call<List<PhotoResponse>> photoCall = UnsplashApi.getInstance()
                 .getService()
-                .getPhotos();
+                .getPhotos(page, PER_PAGE_LIMIT);
 
         photoCalls.add(photoCall);
         photoCall.enqueue(new Callback<List<PhotoResponse>>() {
