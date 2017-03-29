@@ -128,6 +128,7 @@ public class ImageOverviewActivity extends AppCompatActivity implements ImageOve
         Log.d(TAG, "send username details --> " + photoList.get(position).getUser().getName());
         Log.d(TAG, "send url details --> " + photoList.get(position).getUrls().getImage_regular());
         startActivity(intent);
+//        overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
     }
 
 
