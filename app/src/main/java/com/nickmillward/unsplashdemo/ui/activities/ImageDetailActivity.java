@@ -42,14 +42,14 @@ public class ImageDetailActivity extends AppCompatActivity implements ImageDetai
         setupActionBar();
         setupIntentExtras();
         setupViewsWithExtras();
-        setupWindowStyle();
+//        setupWindowStyle();
     }
 
     private void setupWindowStyle() {
         window = getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(ContextCompat.getColor(this, android.R.color.transparent));
+        window.setStatusBarColor(ContextCompat.getColor(this, android.R.color.holo_red_dark));
     }
 
     private void setupIntentExtras() {
