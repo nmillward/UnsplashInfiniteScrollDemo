@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.nickmillward.unsplashdemo.R;
@@ -18,10 +19,10 @@ public class ImageDetailActivity extends AppCompatActivity implements ImageDetai
     public static final String KEY_USER_LOCATION = "userLocation";
     public static final String KEY_PHOTO_URL = "photoUrl";
 
-    @BindView(R.id.iv_detail_hero_image)
-    ImageView iv_detail_hero_image;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
+    @BindView(R.id.iv_detail_hero_image) ImageView iv_detail_hero_image;
+    @BindView(R.id.tv_detailview_username) TextView tv_detailview_username;
+    @BindView(R.id.tv_detailview_location) TextView tv_detailview_location;
+    @BindView(R.id.toolbar) Toolbar toolbar;
 
     private String userName;
     private String userLocation;
@@ -56,6 +57,8 @@ public class ImageDetailActivity extends AppCompatActivity implements ImageDetai
     }
 
     private void setupViewsWithExtras() {
+        tv_detailview_username.setText(userName);
+        tv_detailview_location.setText(userLocation);
         Glide.with(this)
                 .load(photoUrl_regular)
                 .centerCrop()

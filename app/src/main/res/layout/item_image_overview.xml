@@ -24,10 +24,13 @@
         <LinearLayout
             android:id="@+id/ll_overview_item_banner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="?attr/actionBarSize"
             android:background="@android:color/holo_blue_light"
             android:orientation="vertical"
-            android:padding="8dp">
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
 
             <TextView
                 android:id="@+id/tv_overview_item_banner_username"
