@@ -19,7 +19,8 @@
             android:id="@+id/iv_overview_item_image"
             android:layout_width="match_parent"
             android:layout_height="220dp"
-            android:src="@mipmap/ic_launcher" />
+            android:padding="24dp"
+            android:src="@drawable/ic_image_placeholder" />
 
         <LinearLayout
             android:id="@+id/ll_overview_item_banner"
