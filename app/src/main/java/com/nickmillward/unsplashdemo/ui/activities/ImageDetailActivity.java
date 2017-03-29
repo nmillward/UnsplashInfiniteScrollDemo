@@ -18,7 +18,10 @@ public class ImageDetailActivity extends AppCompatActivity implements ImageDetai
     public static final String KEY_USER_LOCATION = "userLocation";
     public static final String KEY_PHOTO_URL = "photoUrl";
 
-    @BindView(R.id.iv_detail_hero_image) ImageView iv_detail_hero_image;
+    @BindView(R.id.iv_detail_hero_image)
+    ImageView iv_detail_hero_image;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     private String userName;
     private String userLocation;
@@ -28,16 +31,14 @@ public class ImageDetailActivity extends AppCompatActivity implements ImageDetai
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_detail);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         ButterKnife.bind(this);
 
-        initIntentExtras();
-        initViewsWithExtras();
-
+        setupActionBar();
+        setupIntentExtras();
+        setupViewsWithExtras();
     }
 
-    private void initIntentExtras() {
+    private void setupIntentExtras() {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             userName = extras.getString(KEY_USER_NAME);
@@ -46,7 +47,15 @@ public class ImageDetailActivity extends AppCompatActivity implements ImageDetai
         }
     }
 
-    private void initViewsWithExtras() {
+    private void setupActionBar() {
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+    }
+
+    private void setupViewsWithExtras() {
         Glide.with(this)
                 .load(photoUrl_regular)
                 .centerCrop()
@@ -54,7 +63,8 @@ public class ImageDetailActivity extends AppCompatActivity implements ImageDetai
     }
 
     @Override
-    public void navigateToOverviewScreen() {
-
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }
