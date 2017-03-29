@@ -28,6 +28,7 @@ public class ImageOverviewActivity extends AppCompatActivity implements ImageOve
     private static final int COLUMNS = 2;
 
     @BindView(R.id.rv_main_image_overview) RecyclerView rv_main_image_overview;
+    @BindView(R.id.toolbar) Toolbar toolbar;
 
     private ImageOverviewPresenter presenter;
     private GridLayoutManager gridLayoutManager;
@@ -38,10 +39,9 @@ public class ImageOverviewActivity extends AppCompatActivity implements ImageOve
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_overview);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         ButterKnife.bind(this);
 
+        setupToolbar();
         setupAdapter();
         setupRecyclerView();
         setupPresenter();
@@ -66,6 +66,13 @@ public class ImageOverviewActivity extends AppCompatActivity implements ImageOve
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+    private void setupToolbar() {
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
     }
 
     private void setupAdapter() {
