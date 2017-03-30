@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
@@ -28,7 +27,6 @@ public class ImageOverviewActivity extends AppCompatActivity implements ImageOve
     private static final int COLUMNS = 2;
 
     @BindView(R.id.rv_main_image_overview) RecyclerView rv_main_image_overview;
-    @BindView(R.id.toolbar) Toolbar toolbar;
 
     private ImageOverviewPresenter presenter;
     private GridLayoutManager gridLayoutManager;
@@ -41,7 +39,6 @@ public class ImageOverviewActivity extends AppCompatActivity implements ImageOve
         setContentView(R.layout.activity_image_overview);
         ButterKnife.bind(this);
 
-        setupToolbar();
         setupAdapter();
         setupRecyclerView();
         setupPresenter();
@@ -66,13 +63,6 @@ public class ImageOverviewActivity extends AppCompatActivity implements ImageOve
     @Override
     protected void onDestroy() {
         super.onDestroy();
-    }
-
-    private void setupToolbar() {
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
-        }
     }
 
     private void setupAdapter() {

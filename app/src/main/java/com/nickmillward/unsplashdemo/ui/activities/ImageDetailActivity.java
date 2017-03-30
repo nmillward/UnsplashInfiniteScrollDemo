@@ -49,7 +49,7 @@ public class ImageDetailActivity extends AppCompatActivity implements ImageDetai
         window = getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(ContextCompat.getColor(this, android.R.color.holo_red_dark));
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.trans_black));
     }
 
     private void setupIntentExtras() {
