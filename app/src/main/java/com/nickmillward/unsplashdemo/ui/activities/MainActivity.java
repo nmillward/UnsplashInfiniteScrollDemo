@@ -15,6 +15,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startApp() {
-        startActivity(new Intent(this, ImageOverviewActivity.class));
+        Intent intent = new Intent(this, ImageOverviewActivity.class);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
     }
 }

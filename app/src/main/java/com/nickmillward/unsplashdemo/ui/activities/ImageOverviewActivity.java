@@ -139,5 +139,8 @@ public class ImageOverviewActivity extends AppCompatActivity implements ImageOve
 //        overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
     }
 
-
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
 }
