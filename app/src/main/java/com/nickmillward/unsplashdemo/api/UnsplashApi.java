@@ -70,7 +70,7 @@ public class UnsplashApi {
         @Override
         public Response intercept(Chain chain) throws IOException {
             Request request = chain.request();
-            if (UnsplashApplication.hasNetwork()) {
+            if (!UnsplashApplication.hasNetwork()) {
                 request = request.newBuilder()
                         .header("Cache-Control", "public, only-if-cached, max-stale=" + 604800)
                         .build();
