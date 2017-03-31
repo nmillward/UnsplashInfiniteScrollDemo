@@ -25,7 +25,7 @@ public class UnsplashApi {
     private UnsplashApi() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
-                .client(authorizationHeader)
+                .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -44,7 +44,14 @@ public class UnsplashApi {
         return service;
     }
 
-    private OkHttpClient authorizationHeader = new OkHttpClient().newBuilder().addInterceptor(new Interceptor() {
+    
+    private OkHttpClient client = new OkHttpClient.Builder()
+            .addInterceptor(new AuthorizationHeaderInterceptor())
+            .build();
+
+
+
+    private static class AuthorizationHeaderInterceptor implements Interceptor {
         @Override
         public Response intercept(Chain chain) throws IOException {
             Request originalRequest = chain.request();
@@ -52,10 +59,9 @@ public class UnsplashApi {
             Request newRequest = builder.build();
             return chain.proceed(newRequest);
         }
-    }).build();
+    }
 
-
-    private class ResponseCacheInterceptor implements Interceptor {
+    private static class ResponseCacheInterceptor implements Interceptor {
         @Override
         public Response intercept(Chain chain) throws IOException {
             okhttp3.Response originalResponse = chain.proceed(chain.request());
@@ -66,7 +72,7 @@ public class UnsplashApi {
     }
 
 
-    private class OfflineCacheInterceptor implements Interceptor {
+    private static class OfflineCacheInterceptor implements Interceptor {
         @Override
         public Response intercept(Chain chain) throws IOException {
             Request request = chain.request();
