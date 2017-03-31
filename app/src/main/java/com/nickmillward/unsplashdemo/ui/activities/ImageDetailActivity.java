@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.nickmillward.unsplashdemo.R;
+import com.nickmillward.unsplashdemo.ui.presenters.ImageDetailPresenter;
 import com.nickmillward.unsplashdemo.ui.views.ImageDetailView;
 
 import butterknife.BindView;
@@ -27,6 +28,8 @@ public class ImageDetailActivity extends AppCompatActivity implements ImageDetai
     @BindView(R.id.tv_detailview_location) TextView tv_detailview_location;
     @BindView(R.id.toolbar) Toolbar toolbar;
 
+    private ImageDetailPresenter presenter;
+
     private Window window;
     private String userName;
     private String userLocation;
@@ -38,10 +41,10 @@ public class ImageDetailActivity extends AppCompatActivity implements ImageDetai
         setContentView(R.layout.activity_image_detail);
         ButterKnife.bind(this);
 
+        setupPresenter();
         setupActionBar();
         setupIntentExtras();
         setupViewsWithExtras();
-//        setupWindowStyle();
     }
 
     private void setupWindowStyle() {
@@ -67,6 +70,11 @@ public class ImageDetailActivity extends AppCompatActivity implements ImageDetai
             getSupportActionBar().setDisplayShowHomeEnabled(true);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
+    }
+
+    private void setupPresenter() {
+        presenter = new ImageDetailPresenter();
+        presenter.attachView(this);
     }
 
     private void setupViewsWithExtras() {
