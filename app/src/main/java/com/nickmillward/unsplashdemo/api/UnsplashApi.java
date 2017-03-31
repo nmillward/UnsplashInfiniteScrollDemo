@@ -1,5 +1,7 @@
 package com.nickmillward.unsplashdemo.api;
 
+import android.util.Log;
+
 import com.nickmillward.unsplashdemo.UnsplashApplication;
 
 import java.io.File;
@@ -54,10 +56,10 @@ public class UnsplashApi {
             .cache(new Cache(new File(
                             UnsplashApplication.getApplicationInstance().getCacheDir(),
                             "unsplashApiResponses"),
-                            5 * 1024 * 1024)
+                            5 * 1024 * 1024) // 5 MB
             )
             .build();
-    
+
 
     private static class AuthorizationHeaderInterceptor implements Interceptor {
         @Override
@@ -86,8 +88,10 @@ public class UnsplashApi {
             Request request = chain.request();
             if (!UnsplashApplication.hasNetwork()) {
                 request = request.newBuilder()
-                        .header("Cache-Control", "public, only-if-cached, max-stale=" + 604800)
+                        .header("Cache-Control", "public, only-if-cached, max-stale=" + 604800) // 1 Week
                         .build();
+                Log.d("API", "New offline cache stored");
+
             }
             return chain.proceed(request);
         }
