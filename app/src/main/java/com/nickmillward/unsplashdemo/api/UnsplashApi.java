@@ -1,5 +1,7 @@
 package com.nickmillward.unsplashdemo.api;
 
+import com.nickmillward.unsplashdemo.UnsplashApplication;
+
 import java.io.IOException;
 
 import okhttp3.Interceptor;
@@ -68,11 +70,11 @@ public class UnsplashApi {
         @Override
         public Response intercept(Chain chain) throws IOException {
             Request request = chain.request();
-//            if (Utils.isNetworkAvailable(context)) {
-//                request = request.newBuilder()
-//                        .header("Cache-Control", "public, only-if-cached, max-stale=" + 604800)
-//                        .build();
-//            }
+            if (UnsplashApplication.hasNetwork()) {
+                request = request.newBuilder()
+                        .header("Cache-Control", "public, only-if-cached, max-stale=" + 604800)
+                        .build();
+            }
             return chain.proceed(request);
         }
     }
