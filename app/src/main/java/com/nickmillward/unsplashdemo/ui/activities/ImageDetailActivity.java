@@ -35,7 +35,6 @@ public class ImageDetailActivity extends AppCompatActivity implements ImageDetai
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
         setContentView(R.layout.activity_image_detail);
         ButterKnife.bind(this);
 
@@ -82,7 +81,6 @@ public class ImageDetailActivity extends AppCompatActivity implements ImageDetai
     @Override
     public boolean onSupportNavigateUp() {
         super.onBackPressed();
-//        overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
         return true;
     }
 }

@@ -23,7 +23,7 @@ public class UnsplashApi {
     private UnsplashApi() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
-                .client(client)
+                .client(authorizationHeader)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -42,7 +42,7 @@ public class UnsplashApi {
         return service;
     }
 
-    private OkHttpClient client = new OkHttpClient().newBuilder().addInterceptor(new Interceptor() {
+    private OkHttpClient authorizationHeader = new OkHttpClient().newBuilder().addInterceptor(new Interceptor() {
         @Override
         public Response intercept(Chain chain) throws IOException {
             Request originalRequest = chain.request();
@@ -51,4 +51,30 @@ public class UnsplashApi {
             return chain.proceed(newRequest);
         }
     }).build();
+
+
+    private class ResponseCacheInterceptor implements Interceptor {
+        @Override
+        public Response intercept(Chain chain) throws IOException {
+            okhttp3.Response originalResponse = chain.proceed(chain.request());
+            return originalResponse.newBuilder()
+                    .header("Cache-Control", "public, max-size=" + 60)
+                    .build();
+        }
+    }
+
+
+    private class OfflineCacheInterceptor implements Interceptor {
+        @Override
+        public Response intercept(Chain chain) throws IOException {
+            Request request = chain.request();
+//            if (Utils.isNetworkAvailable(context)) {
+//                request = request.newBuilder()
+//                        .header("Cache-Control", "public, only-if-cached, max-stale=" + 604800)
+//                        .build();
+//            }
+            return chain.proceed(request);
+        }
+    }
+
 }
