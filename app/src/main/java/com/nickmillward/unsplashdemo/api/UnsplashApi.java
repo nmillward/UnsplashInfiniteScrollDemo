@@ -2,8 +2,10 @@ package com.nickmillward.unsplashdemo.api;
 
 import com.nickmillward.unsplashdemo.UnsplashApplication;
 
+import java.io.File;
 import java.io.IOException;
 
+import okhttp3.Cache;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -44,12 +46,18 @@ public class UnsplashApi {
         return service;
     }
 
-    
+
     private OkHttpClient client = new OkHttpClient.Builder()
+            .addNetworkInterceptor(new ResponseCacheInterceptor())
             .addInterceptor(new AuthorizationHeaderInterceptor())
+            .addInterceptor(new OfflineCacheInterceptor())
+            .cache(new Cache(new File(
+                            UnsplashApplication.getApplicationInstance().getCacheDir(),
+                            "unsplashApiResponses"),
+                            5 * 1024 * 1024)
+            )
             .build();
-
-
+    
 
     private static class AuthorizationHeaderInterceptor implements Interceptor {
         @Override

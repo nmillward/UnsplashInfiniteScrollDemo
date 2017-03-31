@@ -19,6 +19,10 @@ public class UnsplashApplication extends Application {
         instance = this;
     }
 
+    public static UnsplashApplication getApplicationInstance() {
+        return instance;
+    }
+
     public static boolean hasNetwork() {
         return instance.isNetworkAvailable();
     }
