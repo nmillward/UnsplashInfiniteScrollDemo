@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="trans_black">#3c000000</color>
+    <color name="trans_black_40">#28000000</color>
 </resources>
