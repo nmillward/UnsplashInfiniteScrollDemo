@@ -3,6 +3,7 @@ package com.nickmillward.unsplashdemo.ui.presenters;
 import android.util.Log;
 import android.view.View;
 
+import com.nickmillward.unsplashdemo.R;
 import com.nickmillward.unsplashdemo.api.UnsplashApi;
 import com.nickmillward.unsplashdemo.api.models.PhotoResponse;
 import com.nickmillward.unsplashdemo.ui.views.ImageOverviewView;
@@ -69,7 +70,7 @@ public class ImageOverviewPresenter implements Presenter<ImageOverviewView> {
 
             @Override
             public void onFailure(Call<List<PhotoResponse>> call, Throwable t) {
-                view.showError();
+                view.showError(R.string.uploadPhotoErrorMsg);
             }
         });
     }

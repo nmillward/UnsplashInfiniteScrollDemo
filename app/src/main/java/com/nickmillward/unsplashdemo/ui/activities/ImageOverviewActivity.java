@@ -2,6 +2,8 @@ package com.nickmillward.unsplashdemo.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -26,6 +28,7 @@ public class ImageOverviewActivity extends AppCompatActivity implements ImageOve
     public static final String TAG = ImageOverviewActivity.class.getSimpleName();
     private static final int COLUMNS = 2;
 
+    @BindView(R.id.cl_overview) CoordinatorLayout cl_overview;
     @BindView(R.id.rv_main_image_overview) RecyclerView rv_main_image_overview;
 
     private ImageOverviewPresenter presenter;
@@ -122,8 +125,11 @@ public class ImageOverviewActivity extends AppCompatActivity implements ImageOve
     }
 
     @Override
-    public void showError() {
+    public void showError(int errorMessage) {
         Log.d(TAG, "--> Error");
+        Snackbar snackbar = Snackbar.make(cl_overview, errorMessage, Snackbar.LENGTH_LONG);
+        snackbar.getView().setBackgroundResource(R.color.red_error_message);
+        snackbar.show();
     }
 
     @Override

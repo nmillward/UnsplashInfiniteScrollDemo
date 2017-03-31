@@ -13,6 +13,6 @@ public interface ImageOverviewView extends View {
     void showAddedImages(List<PhotoResponse> images);
     void showLoading();
     void hideLoading();
-    void showError();
+    void showError(int message);
     void navigateToDetailScreen(android.view.View view, int position);
 }
