@@ -121,7 +121,7 @@ public class ImageOverviewActivity extends AppCompatActivity implements ImageOve
 
     @Override
     public void hideLoading() {
-
+        Log.d(TAG, "--> ...done loading");
     }
 
     @Override

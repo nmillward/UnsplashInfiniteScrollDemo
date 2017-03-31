@@ -64,6 +64,7 @@ public class ImageOverviewPresenter implements Presenter<ImageOverviewView> {
                 if (response.isSuccessful()) {
                     List<PhotoResponse> photos = response.body();
                     Log.d("Presenter", "ResponseBody --> " + photos);
+                    view.hideLoading();
                     view.showAddedImages(photos);
                 }
             }

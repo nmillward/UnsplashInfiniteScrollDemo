@@ -2,7 +2,6 @@ package com.nickmillward.unsplashdemo.utils;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 /**
  * Created by nmillward on 3/29/17.
@@ -49,8 +48,8 @@ public abstract class InfiniteScrollListener extends RecyclerView.OnScrollListen
             isLoading = true;
         }
 
-        Log.d("SCROLL", "currentPage: " + currentPage);
-        Log.d("SCROLL", "totalItemCount: " + totalItemCount);
+//        Log.d("SCROLL", "currentPage: " + currentPage);
+//        Log.d("SCROLL", "totalItemCount: " + totalItemCount);
     }
 
     public abstract void onLoadMore(int page, int totalItemsCount, RecyclerView view);
