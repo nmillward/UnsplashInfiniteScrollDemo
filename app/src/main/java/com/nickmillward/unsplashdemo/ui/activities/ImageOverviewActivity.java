@@ -127,8 +127,15 @@ public class ImageOverviewActivity extends AppCompatActivity implements ImageOve
     @Override
     public void showError(int errorMessage) {
         Log.d(TAG, "--> Error");
-        Snackbar snackbar = Snackbar.make(cl_overview, errorMessage, Snackbar.LENGTH_LONG);
+        Snackbar snackbar = Snackbar.make(cl_overview, errorMessage, Snackbar.LENGTH_INDEFINITE)
+                .setAction("RETRY", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        presenter.updatePhotos(1);
+                    }
+                });
         snackbar.getView().setBackgroundResource(R.color.red_error_message);
+        snackbar.setActionTextColor(getResources().getColor(android.R.color.white));
         snackbar.show();
     }
 
