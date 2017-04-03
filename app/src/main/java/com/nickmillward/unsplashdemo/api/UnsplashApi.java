@@ -71,6 +71,7 @@ public class UnsplashApi {
         }
     }
 
+
     private static class ResponseCacheInterceptor implements Interceptor {
         @Override
         public Response intercept(Chain chain) throws IOException {
