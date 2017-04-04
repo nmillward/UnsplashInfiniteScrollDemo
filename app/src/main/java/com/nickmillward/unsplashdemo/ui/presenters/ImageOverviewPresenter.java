@@ -38,7 +38,6 @@ public class ImageOverviewPresenter implements Presenter<ImageOverviewView> {
     }
 
     public void unsubscribe() {
-        // Cancel all in photo updates
         for (Call<List<PhotoResponse>> call : photoCalls) {
             if (call != null && call.isExecuted() && !call.isCanceled()) {
                 call.cancel();
@@ -58,8 +57,6 @@ public class ImageOverviewPresenter implements Presenter<ImageOverviewView> {
         photoCall.enqueue(new Callback<List<PhotoResponse>>() {
             @Override
             public void onResponse(Call<List<PhotoResponse>> call, Response<List<PhotoResponse>> response) {
-
-                // TODO: Save response to sharedPref
 
                 if (response.isSuccessful()) {
                     List<PhotoResponse> photos = response.body();
