@@ -18,4 +18,12 @@ public class PhotoResponse {
     public Urls getUrls() {
         return urls;
     }
+
+    @Override
+    public String toString() {
+        return "PhotoResponse{" +
+                "user=" + user +
+                ", urls=" + urls +
+                '}';
+    }
 }

@@ -34,7 +34,6 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
     public ImageAdapter(Context context, ItemClickListener itemClickListener) {
         this.context = context;
         this.itemClickListener = itemClickListener;
-        Log.d("ADAPTER", "--> Adapter constructed");
     }
 
     @Override
@@ -49,14 +48,11 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
             }
         });
 
-        Log.d("ADAPTER", "--> Item Layout Inflated");
         return imageViewHolder;
     }
 
     @Override
     public void onBindViewHolder(ImageViewHolder holder, int position) {
-        Log.d("ADAPTER", "--> onBindViewHolder + position: " + position);
-
         PhotoResponse photo = photos.get(position);
 
         holder.userName.setText(photo.getUser().getName());
@@ -84,7 +80,6 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
 
     public void addPhotos(List<PhotoResponse> newPhotos) {
         photos.addAll(newPhotos);
-        Log.d("ADAPTER", "--> Photos Added: " + photos.toString());
         notifyDataSetChanged();
     }
 
@@ -107,9 +102,6 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
         public ImageViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-
-            Log.d("ADAPTER", "--> ImageViewHolder");
-
         }
     }
 

@@ -18,4 +18,12 @@ public class User {
     public String getLocation() {
         return location;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", location='" + location + '\'' +
+                '}';
+    }
 }

@@ -18,4 +18,11 @@ public class Urls {
     public String getImage_small() {
         return image_small;
     }
+
+    @Override
+    public String toString() {
+        return "Urls{" +
+                "image_regular='" + image_regular + '\'' +
+                '}';
+    }
 }

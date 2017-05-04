@@ -13,7 +13,7 @@ public abstract class InfiniteScrollListener extends RecyclerView.OnScrollListen
     private int minItemsBeforeNextLoad = 5;
     private int startingPage = 1;
     private int currentPage = 1;
-    private int lastestTotalItemCount = 0;
+    private int latestTotalItemCount = 0;
     private boolean isLoading = true;
 
     GridLayoutManager layoutManager;
@@ -29,16 +29,16 @@ public abstract class InfiniteScrollListener extends RecyclerView.OnScrollListen
         int totalItemCount = layoutManager.getItemCount();
 
         // Assume list was invalidated -- set back to default
-        if (totalItemCount < lastestTotalItemCount) {
+        if (totalItemCount < latestTotalItemCount) {
             this.currentPage = this.startingPage;
-            this.lastestTotalItemCount = totalItemCount;
+            this.latestTotalItemCount = totalItemCount;
         }
 
         // If still loading and dataset size has been updated,
         // update load state and last item count
-        if (isLoading && totalItemCount > lastestTotalItemCount) {
+        if (isLoading && totalItemCount > latestTotalItemCount) {
             isLoading = false;
-            lastestTotalItemCount = totalItemCount;
+            latestTotalItemCount = totalItemCount;
         }
 
         // If not loading and within threashold limit, increase current page and load more data
@@ -47,9 +47,6 @@ public abstract class InfiniteScrollListener extends RecyclerView.OnScrollListen
             onLoadMore(currentPage, totalItemCount, recyclerView);
             isLoading = true;
         }
-
-//        Log.d("SCROLL", "currentPage: " + currentPage);
-//        Log.d("SCROLL", "totalItemCount: " + totalItemCount);
     }
 
     public abstract void onLoadMore(int page, int totalItemsCount, RecyclerView view);
