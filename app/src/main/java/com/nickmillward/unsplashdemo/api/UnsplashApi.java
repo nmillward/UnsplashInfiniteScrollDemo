@@ -22,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class UnsplashApi {
 
     private static final String BASE_URL = "https://api.unsplash.com";
-    private static final String AUTH_ID = "Authorization: Client-ID 7722d16f0aa594e42744971bc1453894529e924055f3cd2bfebdba439e6e0017";
+    private static final String AUTH_ID = "Authorization: Client-ID 00000000000000"; //TODO: ENTER VALID CLIENT ID
     private static UnsplashApi instance;
     private UnsplashService service;
 
